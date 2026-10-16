@@ -28,3 +28,12 @@ This is Part 2 of the PROG6212 Portfolio of Evidence. It implements the endpoint
   - `Program.cs` - application setup
 - `RaceDay.API.Tests/` - the unit tests
 - `.github/workflows/ci.yml` - the CI workflow
+
+## Setup
+
+Requirements: Visual Studio with the ASP.NET workload, the .NET 10 SDK, and SQL Server LocalDB (installed with Visual Studio).
+
+1. Clone this repository.
+2. Open `RaceDay.API.slnx` in Visual Studio.
+3. Check the connection string in `RaceDay.API/appsettings.json`. The default uses LocalDB: `Server=(localdb)\mssqllocaldb;Database=RaceDayDB;...`
+4. Open Tools > NuGet Package Manager > Package Manager Console, set Default project to `RaceDay.API`, and run: `Update-Database`. The migrations are already included, so this creates the RaceDayDB database and all six tables.
