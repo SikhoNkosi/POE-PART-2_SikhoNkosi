@@ -80,4 +80,4 @@ Run them in Visual Studio with Test > Test Explorer > Run All Tests, or from the
 - An extra endpoint, `POST /api/auth/logout`, was added. It was not in the Part 1 plan, and it is needed to end a session.
 - The `Payment` entity exists in the database to match the Part 1 ERD, but has no endpoints, as in the Part 1 endpoint plan.
 - Capturing a second result for the same enrolment returns `409 Conflict`.
-- The database is created by EF Core Code-First migrations and otherwise matches the Part 1 ERD.
+- The database is created by EF Core Code-First migrations and otherwise matches the Part 1 ERD
