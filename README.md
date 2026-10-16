@@ -37,3 +37,17 @@ Requirements: Visual Studio with the ASP.NET workload, the .NET 10 SDK, and SQL 
 2. Open `RaceDay.API.slnx` in Visual Studio.
 3. Check the connection string in `RaceDay.API/appsettings.json`. The default uses LocalDB: `Server=(localdb)\mssqllocaldb;Database=RaceDayDB;...`
 4. Open Tools > NuGet Package Manager > Package Manager Console, set Default project to `RaceDay.API`, and run: `Update-Database`. The migrations are already included, so this creates the RaceDayDB database and all six tables.
+
+## Running the API
+
+Press F5 in Visual Studio, or from the `RaceDay.API` folder run: `dotnet run --launch-profile https`
+
+Then open `https://localhost:7083/swagger` in your browser. Every endpoint is listed with a description, the input it expects and the responses it can return.
+
+To try it out:
+1. Call `POST /api/auth/register` to create an Organiser or a Participant.
+2. Call `POST /api/auth/login` with the same email and password. The server now remembers you.
+3. Call any protected endpoint. No extra token is needed.
+4. Call `POST /api/auth/logout` to end the session.
+
+Sessions are kept in the API's memory, so restarting the API logs everyone out.
