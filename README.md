@@ -51,3 +51,11 @@ To try it out:
 4. Call `POST /api/auth/logout` to end the session.
 
 Sessions are kept in the API's memory, so restarting the API logs everyone out.
+
+## Authentication and roles
+
+- Users register as either an `Organiser` or a `Participant`. Passwords are hashed with BCrypt and never stored in plain text.
+- On login the server creates a server-side session that stores the user's ID and role. The browser holds only a session cookie.
+- A custom authentication handler reads the session on every request. Endpoints use `[Authorize(Roles = "...")]` to enforce the role.
+- Some endpoints also check ownership: an Organiser can only change their own events, categories and results, and a Participant can only cancel their own enrolments.
+- A request with no session gets `401 Unauthorized`. A logged-in user with the wrong role, or someone else's resource, gets `403 Forbidden`.
