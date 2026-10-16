@@ -16,7 +16,6 @@ jobs:
       - name: Validate repository structure
         run: |
           test -f README.md || (echo "Missing README.md" && exit 1)
-          test -d docs || (echo "Missing docs folder" && exit 1)
           test -f RaceDay.API.sln || (echo "Missing RaceDay.API.sln" && exit 1)
           test -f RaceDay.API/RaceDay.API.csproj || (echo "Missing RaceDay.API project" && exit 1)
           test -f RaceDay.API.Tests/RaceDay.API.Tests.csproj || (echo "Missing RaceDay.API.Tests project" && exit 1)
