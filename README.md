@@ -81,3 +81,7 @@ Run them in Visual Studio with Test > Test Explorer > Run All Tests, or from the
 - The `Payment` entity exists in the database to match the Part 1 ERD, but has no endpoints, as in the Part 1 endpoint plan.
 - Capturing a second result for the same enrolment returns `409 Conflict`.
 - The database is created by EF Core Code-First migrations and otherwise matches the Part 1 ERD
+
+the CI workflow works fine
+<img width="959" height="476" alt="Screenshot 2026-10-16 100827" src="https://github.com/user-attachments/assets/7f27e38e-da16-4155-bcd4-01ae19a37df4" />
+
