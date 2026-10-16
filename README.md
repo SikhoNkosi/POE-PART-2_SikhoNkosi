@@ -42,7 +42,7 @@ Requirements: Visual Studio with the ASP.NET workload, the .NET 10 SDK, and SQL 
 
 Press F5 in Visual Studio, or from the `RaceDay.API` folder run: `dotnet run --launch-profile https`
 
-Then open `https://localhost:7083/swagger` in your browser. Every endpoint is listed with a description, the input it expects and the responses it can return.
+Then open `https://localhost:7083/swagger` in your browser. Every endpoint is listed with a description, the input it expects and the responses it can return
 
 To try it out:
 1. Call `POST /api/auth/register` to create an Organiser or a Participant.
