@@ -59,3 +59,17 @@ Sessions are kept in the API's memory, so restarting the API logs everyone out.
 - A custom authentication handler reads the session on every request. Endpoints use `[Authorize(Roles = "...")]` to enforce the role.
 - Some endpoints also check ownership: an Organiser can only change their own events, categories and results, and a Participant can only cancel their own enrolments.
 - A request with no session gets `401 Unauthorized`. A logged-in user with the wrong role, or someone else's resource, gets `403 Forbidden`.
+
+## Unit tests
+
+There are 71 xUnit tests. They start the real API inside the test run using `WebApplicationFactory`, with a fresh in-memory database, so no SQL Server is needed. Each test covers a success case or a failure case.
+
+They cover:
+- registration, login, logout, hashed passwords and the server-side session
+- event management (create, view, update, delete, and ownership rules)
+- categories
+- role enforcement (a Participant cannot use Organiser features and the other way round, and logged-out users are rejected)
+- enrolments (enrolling, duplicates, viewing, cancelling, and that the enrolment is recorded correctly)
+- results
+
+Run them in Visual Studio with Test > Test Explorer > Run All Tests, or from the solution folder with: `dotnet test RaceDay.API.slnx`
