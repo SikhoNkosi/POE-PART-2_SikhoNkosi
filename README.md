@@ -73,3 +73,11 @@ They cover:
 - results
 
 Run them in Visual Studio with Test > Test Explorer > Run All Tests, or from the solution folder with: `dotnet test RaceDay.API.slnx`
+
+## Design decisions and differences from Part 1
+
+- The `Event` entity has two extra fields, `Distance` and `EventType` (Run, Walk or Cycle). The Part 2 requirements ask for them, and they were not in the Part 1 ERD.
+- An extra endpoint, `POST /api/auth/logout`, was added. It was not in the Part 1 plan, and it is needed to end a session.
+- The `Payment` entity exists in the database to match the Part 1 ERD, but has no endpoints, as in the Part 1 endpoint plan.
+- Capturing a second result for the same enrolment returns `409 Conflict`.
+- The database is created by EF Core Code-First migrations and otherwise matches the Part 1 ERD.
