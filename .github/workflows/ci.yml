@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate repository structure
+        run: |
+          test -f README.md || (echo "Missing README.md" && exit 1)
+          test -d docs || (echo "Missing docs folder" && exit 1)
+          test -f RaceDay.API.sln || (echo "Missing RaceDay.API.sln" && exit 1)
+          test -f RaceDay.API/RaceDay.API.csproj || (echo "Missing RaceDay.API project" && exit 1)
+          test -f RaceDay.API.Tests/RaceDay.API.Tests.csproj || (echo "Missing RaceDay.API.Tests project" && exit 1)
+          echo "Repository structure is valid."
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore packages
+        run: dotnet restore RaceDay.API.sln
+
+      - name: Build
+        run: dotnet build RaceDay.API.sln --no-restore --configuration Release
+
+      - name: Run unit tests
+        run: dotnet test RaceDay.API.sln --no-build --configuration Release --verbosity normal
