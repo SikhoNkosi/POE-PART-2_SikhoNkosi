@@ -16,7 +16,7 @@ jobs:
       - name: Validate repository structure
         run: |
           test -f README.md || (echo "Missing README.md" && exit 1)
-          test -f RaceDay.API.sln || (echo "Missing RaceDay.API.sln" && exit 1)
+          test -f RaceDay.API.slnx || (echo "Missing RaceDay.API.slnx" && exit 1)
           test -f RaceDay.API/RaceDay.API.csproj || (echo "Missing RaceDay.API project" && exit 1)
           test -f RaceDay.API.Tests/RaceDay.API.Tests.csproj || (echo "Missing RaceDay.API.Tests project" && exit 1)
           echo "Repository structure is valid."
@@ -27,10 +27,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore packages
-        run: dotnet restore RaceDay.API.sln
+        run: dotnet restore RaceDay.API.slnx
 
       - name: Build
-        run: dotnet build RaceDay.API.sln --no-restore --configuration Release
+        run: dotnet build RaceDay.API.slnx --no-restore --configuration Release
 
       - name: Run unit tests
-        run: dotnet test RaceDay.API.sln --no-build --configuration Release --verbosity normal
+        run: dotnet test RaceDay.API.slnx --no-build --configuration Release --verbosity normal
